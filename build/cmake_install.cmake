@@ -1,4 +1,4 @@
-# Install script for directory: /home/aidenwen/game-engine
+# Install script for directory: /home/aidenwen/2d-game-engine
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/aidenwen/game-engine/bin/cmake_install.cmake")
+  include("/home/aidenwen/2d-game-engine/build/src/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/aidenwen/game-engine/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/aidenwen/2d-game-engine/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

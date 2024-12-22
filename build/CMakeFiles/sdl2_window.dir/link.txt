@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/sdl2_window.dir/main.c.o -o sdl2_window  /usr/lib/x86_64-linux-gnu/libSDL2.so 

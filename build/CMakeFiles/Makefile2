@@ -54,66 +54,66 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aidenwen/game-engine
+CMAKE_SOURCE_DIR = /home/aidenwen/2d-game-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aidenwen/game-engine/build
-
-#=============================================================================
-# Directory level rules for directory ../bin
-
-# Recursive "all" directory target.
-../bin/all: ../bin/CMakeFiles/main.dir/all
-.PHONY : ../bin/all
-
-# Recursive "preinstall" directory target.
-../bin/preinstall:
-.PHONY : ../bin/preinstall
-
-# Recursive "clean" directory target.
-../bin/clean: ../bin/CMakeFiles/main.dir/clean
-.PHONY : ../bin/clean
+CMAKE_BINARY_DIR = /home/aidenwen/2d-game-engine/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: ../bin/all
+all: src/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: ../bin/preinstall
+preinstall: src/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: ../bin/clean
+clean: src/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target ../bin/CMakeFiles/main.dir
+# Directory level rules for directory src
+
+# Recursive "all" directory target.
+src/all: src/CMakeFiles/main.dir/all
+.PHONY : src/all
+
+# Recursive "preinstall" directory target.
+src/preinstall:
+.PHONY : src/preinstall
+
+# Recursive "clean" directory target.
+src/clean: src/CMakeFiles/main.dir/clean
+.PHONY : src/clean
+
+#=============================================================================
+# Target rules for target src/CMakeFiles/main.dir
 
 # All Build rule for target.
-../bin/CMakeFiles/main.dir/all:
-	$(MAKE) $(MAKESILENT) -f ../bin/CMakeFiles/main.dir/build.make ../bin/CMakeFiles/main.dir/depend
-	$(MAKE) $(MAKESILENT) -f ../bin/CMakeFiles/main.dir/build.make ../bin/CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aidenwen/game-engine/build/CMakeFiles --progress-num=1,2 "Built target main"
-.PHONY : ../bin/CMakeFiles/main.dir/all
+src/CMakeFiles/main.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aidenwen/2d-game-engine/build/CMakeFiles --progress-num=1,2 "Built target main"
+.PHONY : src/CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
-../bin/CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aidenwen/game-engine/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ../bin/CMakeFiles/main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aidenwen/game-engine/build/CMakeFiles 0
-.PHONY : ../bin/CMakeFiles/main.dir/rule
+src/CMakeFiles/main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aidenwen/2d-game-engine/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aidenwen/2d-game-engine/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-main: ../bin/CMakeFiles/main.dir/rule
+main: src/CMakeFiles/main.dir/rule
 .PHONY : main
 
 # clean rule for target.
-../bin/CMakeFiles/main.dir/clean:
-	$(MAKE) $(MAKESILENT) -f ../bin/CMakeFiles/main.dir/build.make ../bin/CMakeFiles/main.dir/clean
-.PHONY : ../bin/CMakeFiles/main.dir/clean
+src/CMakeFiles/main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/clean
+.PHONY : src/CMakeFiles/main.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

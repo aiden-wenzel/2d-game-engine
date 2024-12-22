@@ -1,4 +1,4 @@
-# Install script for directory: /home/aidenwen/game-engine/src
+# Install script for directory: /home/aidenwen/2d-game-engine/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
