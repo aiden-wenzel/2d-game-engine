@@ -1,7 +1,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <SDL3/SDL_render.h>
 
-#include "circle.h"
+#include "shape.h"
 
 // Implementation of the midpoint circle rendering algorithm.
 // https://en.wikipedia.org/wiki/Midpoint_circle_algorithm
@@ -41,8 +42,10 @@ void plotCirclePoints(SDL_Renderer *renderer, int x, int y, int h, int k) {
     SDL_RenderPoint(renderer, h - y, k - x);  // Octant 8
 }
 
-void renderTriangleFrame(SDL_Renderer* renderer, Point point1, Point point2, Point point3) {
-	
+void renderTriangleFrame(SDL_Renderer* renderer, Vec2 point1, Vec2 point2, Vec2 point3) {
+	SDL_RenderLine(renderer, point1.x, point1.y, point2.x, point2.y);
+	SDL_RenderLine(renderer, point2.x, point2.y, point3.x, point3.y);
+	SDL_RenderLine(renderer, point1.x, point1.y, point3.x, point3.y);
 }
 
 void renderTriangle() {
