@@ -1,11 +1,17 @@
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#include "circle.h"
+
+const int WIDTH = 800;
+const int HEIGHT = 600;
 
 SDL_Window* initializeWindow(int width, int height) {
 	// Create an SDL window
 	SDL_Window* window = SDL_CreateWindow("Simple SDL2 Window",
-			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			width, height, SDL_WINDOW_SHOWN);
+			width, height, 0);
 	if (window == NULL) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		SDL_Quit();
@@ -16,7 +22,7 @@ SDL_Window* initializeWindow(int width, int height) {
 }
 
 SDL_Renderer* initializeRenderer(SDL_Window* window) {
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+	SDL_Renderer* renderer = SDL_CreateRenderer(window, "gpu");
 
 	if (renderer == NULL) {
 		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -34,22 +40,28 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 	
-	SDL_Window* window = initializeWindow(800, 600);
+	SDL_Window* window = initializeWindow(WIDTH, HEIGHT);
 
 	SDL_Renderer* renderer = initializeRenderer(window);
 
 	// Main loop flag
 	int quit = 0;
 	SDL_Event event;
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
 
 	// Main loop
 	while (!quit) {
+
 		// Handle events
 		while (SDL_PollEvent(&event) != 0) {
-			if (event.type == SDL_QUIT) {
+			if (event.type == SDL_EVENT_QUIT) {
 				quit = 1;
 			}
 		}
+		
+		renderCircle(renderer, 300, 200, 100);
+
+		SDL_RenderPresent(renderer);
 	}
 
 	// Clean up and close SDL
@@ -58,4 +70,3 @@ int main(int argc, char* argv[]) {
 
 	return 0;
 }
-
