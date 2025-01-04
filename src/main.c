@@ -1,9 +1,10 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <cglm/cglm.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "shape.h"
+#include "game_object.h"
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
@@ -25,9 +26,10 @@ int main(int argc, char* argv[]) {
 	// Main loop flag
 	int quit = 0;
 	SDL_Event event;
-
-	Vec2 objectPos = {50, 50};
-	Vec2 objectVel = {1, 1};
+	
+	ivec2 objectPos = {50, 50};
+	ivec2 objectVel = {0, 1};
+	GameObject player = initializeGameObject(objectPos, objectVel);
 
 	// Main loop
 	while (!quit) {
@@ -41,12 +43,9 @@ int main(int argc, char* argv[]) {
 			}
 		}
 		
-		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
-		renderCircle(renderer, objectPos.x, objectPos.y, 5);
+		renderGameObject(&player, renderer);
 		SDL_RenderPresent(renderer);
-
-		objectPos.x += objectVel.x;
-		objectPos.y += objectVel.y;
+		moveGameObject(&player);
 	}
 
 	// Clean up and close SDL
