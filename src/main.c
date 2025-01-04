@@ -8,6 +8,7 @@
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
+const int FPS = 60;
 
 SDL_Window* initializeWindow(int width, int height); 
 SDL_Renderer* initializeRenderer(SDL_Window* window); 
@@ -20,7 +21,6 @@ int main(int argc, char* argv[]) {
 	}
 	
 	SDL_Window* window = initializeWindow(WIDTH, HEIGHT);
-
 	SDL_Renderer* renderer = initializeRenderer(window);
 
 	// Main loop flag
@@ -30,9 +30,18 @@ int main(int argc, char* argv[]) {
 	ivec2 objectPos = {50, 50};
 	ivec2 objectVel = {1, 1};
 	GameObject player = initializeGameObject(objectPos, objectVel);
-
+	
 	// Main loop
+
+	Uint64 frameStart;
+	Uint64 frameEnd;
+	Uint64 frameDuration;
+	int idealFrameTime = 1000/60;
+
 	while (!quit) {
+		frameStart = SDL_GetTicks();
+
+	
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 		SDL_RenderClear(renderer);
 
@@ -48,6 +57,12 @@ int main(int argc, char* argv[]) {
 		renderGameObject(&player, renderer);
 		SDL_RenderPresent(renderer);
 		moveGameObject(&player);
+
+		frameEnd = SDL_GetTicks();	
+		frameDuration = frameEnd - frameStart;
+		if (frameDuration < ceil(idealFrameTime)) {
+			SDL_Delay(ceil(idealFrameTime) - frameDuration);
+		}
 	}
 
 	// Clean up and close SDL
