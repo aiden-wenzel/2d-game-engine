@@ -22,11 +22,6 @@ int main(int argc, char* argv[]) {
 
 	SDL_Renderer* renderer = initializeRenderer(window);
 
-	Vec2 point1 = {50, 40};
-	Vec2 point2 = {30, 70};
-	Vec2 point3 = {10, 20};
-
-
 	// Main loop flag
 	int quit = 0;
 	SDL_Event event;
@@ -41,11 +36,6 @@ int main(int argc, char* argv[]) {
 				quit = 1;
 			}
 		}
-		
-		renderCircle(renderer, 300, 200, 100);
-
-		renderTriangleFrame(renderer, point1, point2, point3);	
-		SDL_RenderPresent(renderer);
 	}
 
 	// Clean up and close SDL
