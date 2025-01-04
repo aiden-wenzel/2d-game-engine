@@ -44,8 +44,10 @@ void handleCollision(GameObject* object) {
 	bool collideRight = object->position[0] + object->shape.w == WIDTH;
 	bool collideBottom = object->position[1] + object->shape.h == HEIGHT;
 
-	if (collideTop || collideBottom || collideRight || collideLeft) {
-		object->velocity[0] = 0;
-		object->velocity[1] = 0;
+	if (collideTop || collideBottom ) {
+		object->velocity[1] *= -1;
+	}
+	else if(collideRight || collideLeft) {
+		object->velocity[0] *= -1;
 	}
 }
