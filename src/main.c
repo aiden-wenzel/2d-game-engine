@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 	SDL_Event event;
 	
 	ivec2 objectPos = {50, 50};
-	ivec2 objectVel = {0, 1};
+	ivec2 objectVel = {1, 1};
 	GameObject player = initializeGameObject(objectPos, objectVel);
 
 	// Main loop
@@ -42,6 +42,8 @@ int main(int argc, char* argv[]) {
 				quit = 1;
 			}
 		}
+
+		handleCollision(&player);
 		
 		renderGameObject(&player, renderer);
 		SDL_RenderPresent(renderer);

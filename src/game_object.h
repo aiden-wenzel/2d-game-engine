@@ -15,3 +15,5 @@ GameObject initializeGameObject(ivec2 initialPos, ivec2 initialVel);
 void renderGameObject(GameObject* object, SDL_Renderer* renderer);
 
 void moveGameObject(GameObject* object);
+
+void handleCollision(GameObject* object);
