@@ -25,10 +25,14 @@ int main(int argc, char* argv[]) {
 	// Main loop flag
 	int quit = 0;
 	SDL_Event event;
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
+
+	Vec2 objectPos = {50, 50};
+	Vec2 objectVel = {1, 1};
 
 	// Main loop
 	while (!quit) {
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+		SDL_RenderClear(renderer);
 
 		// Handle events
 		while (SDL_PollEvent(&event) != 0) {
@@ -36,6 +40,13 @@ int main(int argc, char* argv[]) {
 				quit = 1;
 			}
 		}
+		
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
+		renderCircle(renderer, objectPos.x, objectPos.y, 5);
+		SDL_RenderPresent(renderer);
+
+		objectPos.x += objectVel.x;
+		objectPos.y += objectVel.y;
 	}
 
 	// Clean up and close SDL
