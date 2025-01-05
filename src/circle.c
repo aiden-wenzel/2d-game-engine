@@ -2,7 +2,7 @@
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL_render.h>
 
-#include "shape.h"
+#include "circle.h"
 
 // Implementation of the midpoint circle rendering algorithm.
 // https://en.wikipedia.org/wiki/Midpoint_circle_algorithm
