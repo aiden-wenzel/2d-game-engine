@@ -8,7 +8,7 @@
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
-const int FPS = 1;
+const int FPS = 60;
 
 SDL_Window* initializeWindow(int width, int height); 
 SDL_Renderer* initializeRenderer(SDL_Window* window); 
@@ -33,8 +33,8 @@ int main(int argc, char* argv[]) {
 	vec2 objPos2 = {100.0f, 150.0f};
 	vec2 objVel2 = {2.0f, 5.0f};
 
-	GameObject player1 = initializeGameObject(objPos1, objVel1);
-	GameObject player2 = initializeGameObject(objPos2, objVel2);
+	GameObject player1 = initializeGameObject(objPos1, objVel1, 1.0f);
+	GameObject player2 = initializeGameObject(objPos2, objVel2, 1.0f);
 	
 	// Main loop
 
@@ -61,7 +61,8 @@ int main(int argc, char* argv[]) {
 		handleEdgeCollision(&player2);
 
 		if (detectCollision(&player1, &player2)) {
-			printf("%s\n", "Collision detected.");
+			printf("%s\n", "Collision detected");
+			handleCollision(&player1, &player2);
 		}
 		
 		renderGameObject(&player1, renderer);
