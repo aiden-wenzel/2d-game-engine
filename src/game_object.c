@@ -56,59 +56,50 @@ void handleEdgeCollision(GameObject* object) {
 }
 
 bool detectCollision(GameObject* object1, GameObject* object2) {
-	if (
-		object1->position[0] < object2->position[0] + object2->shape.w &&
-		object1->position[0] + object1->shape.w > object2->position[0] &&
-		object1->position[1] < object2->position[1] + object2->shape.h &&
-		object1->position[1] + object1->shape.h > object2->position[1]
-	) {
-		return true;
-	}
-
-	else {
-		return false;
-	}
+	float sumRadi = object1->shape.radius + object2->shape.radius;
+	float distance = glm_vec2_distance(object1->position, object2->position);
+	return distance < sumRadi;
 }
 
-// https://en.wikipedia.org/wiki/Elastic_collision#Two-dimensional
-void handleCollision(GameObject* object1, GameObject* object2) {
-	
-	vec2 object1FinalVel;
-	vec2 object2FinalVel;
-
-	calculateFinalVelocity(object1, object2, object1FinalVel);
-	calculateFinalVelocity(object2, object1, object2FinalVel);
-
-	glm_vec2_copy(object1FinalVel, object1->velocity);
-	glm_vec2_copy(object2FinalVel, object2->velocity);
-}
-
-void getRectangleCenter(GameObject* object, vec2 objectCenter) {
-	objectCenter[0] = (object->shape.w / 2) + object->position[0];
-	objectCenter[1] = object->position[1] - (object->shape.h / 2);
-}
-
-void calculateFinalVelocity(GameObject* object1, GameObject* object2, vec2 dest) {
-	vec2 object1Center;
-	vec2 object2Center;
-	getRectangleCenter(object1, object1Center);
-	getRectangleCenter(object2, object2Center);
-
-	vec2 velocityDifference;
-	vec2 centerDifference;
-	glm_vec2_sub(object1->velocity, object2->velocity, velocityDifference);
-	glm_vec2_sub(object1Center, object2Center, centerDifference);
-
-	float dotScalar = glm_vec2_dot(velocityDifference, centerDifference) / (glm_vec2_norm(centerDifference) * glm_vec2_norm(centerDifference));
-	float massScalar = (2 * object2->mass) / (object1->mass + object2->mass);
-	float massDotProd = dotScalar * massScalar;
-	
-	vec2 finalVelocity;
-
-	vec2 scaledCenterDifference;
-	glm_vec2_scale(centerDifference, massDotProd, scaledCenterDifference);	
-	glm_vec2_sub(object1->velocity, scaledCenterDifference, finalVelocity);
-
-	glm_vec2_copy(finalVelocity, dest);
-
-}
+// // https://en.wikipedia.org/wiki/Elastic_collision#Two-dimensional
+// void handleCollision(GameObject* object1, GameObject* object2) {
+// 	
+// 	vec2 object1FinalVel;
+// 	vec2 object2FinalVel;
+//
+// 	calculateFinalVelocity(object1, object2, object1FinalVel);
+// 	calculateFinalVelocity(object2, object1, object2FinalVel);
+//
+// 	glm_vec2_copy(object1FinalVel, object1->velocity);
+// 	glm_vec2_copy(object2FinalVel, object2->velocity);
+// }
+//
+// void getRectangleCenter(GameObject* object, vec2 objectCenter) {
+// 	objectCenter[0] = (object->shape.w / 2) + object->position[0];
+// 	objectCenter[1] = object->position[1] - (object->shape.h / 2);
+// }
+//
+// void calculateFinalVelocity(GameObject* object1, GameObject* object2, vec2 dest) {
+// 	vec2 object1Center;
+// 	vec2 object2Center;
+// 	getRectangleCenter(object1, object1Center);
+// 	getRectangleCenter(object2, object2Center);
+//
+// 	vec2 velocityDifference;
+// 	vec2 centerDifference;
+// 	glm_vec2_sub(object1->velocity, object2->velocity, velocityDifference);
+// 	glm_vec2_sub(object1Center, object2Center, centerDifference);
+//
+// 	float dotScalar = glm_vec2_dot(velocityDifference, centerDifference) / (glm_vec2_norm(centerDifference) * glm_vec2_norm(centerDifference));
+// 	float massScalar = (2 * object2->mass) / (object1->mass + object2->mass);
+// 	float massDotProd = dotScalar * massScalar;
+// 	
+// 	vec2 finalVelocity;
+//
+// 	vec2 scaledCenterDifference;
+// 	glm_vec2_scale(centerDifference, massDotProd, scaledCenterDifference);	
+// 	glm_vec2_sub(object1->velocity, scaledCenterDifference, finalVelocity);
+//
+// 	glm_vec2_copy(finalVelocity, dest);
+//
+// }
