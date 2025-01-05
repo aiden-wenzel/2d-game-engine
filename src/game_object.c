@@ -18,7 +18,7 @@ GameObject initializeGameObject(vec2 initialPos, vec2 initialVel) {
 	SDL_FRect objectShape;
 	objectShape.x = initialPos[0];
 	objectShape.y = initialPos[1];
-	objectShape.h = 100;
+	objectShape.h = 10;
 	objectShape.w = 100;
 
 	newGameObject.shape = objectShape;
@@ -54,9 +54,15 @@ void handleEdgeCollision(GameObject* object) {
 }
 
 bool detectCollision(GameObject* object1, GameObject* object2) {
-	if (glm_vec2_distance(object1->position, object2->position) < object1->shape.w) {
+	if (
+		object1->position[0] < object2->position[0] + object2->shape.w &&
+		object1->position[0] + object1->shape.w > object2->position[0] &&
+		object1->position[1] < object2->position[1] + object2->shape.h &&
+		object1->position[1] + object1->shape.h > object2->position[1]
+	) {
 		return true;
 	}
+
 	else {
 		return false;
 	}
