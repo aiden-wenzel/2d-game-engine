@@ -95,3 +95,7 @@ void calculateFinalVelocity(GameObject* object1, GameObject* object2, vec2 dest)
 
 	glm_vec2_copy(finalVelocity, dest);
 }
+
+void applyGravity(GameObject* object1, float g) {
+	object1->velocity[1] += g;
+}

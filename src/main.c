@@ -70,6 +70,8 @@ int main(int argc, char* argv[]) {
 		SDL_RenderPresent(renderer);
 		moveGameObject(&player1);
 		moveGameObject(&player2);
+		applyGravity(&player1, 0.5);
+		applyGravity(&player2, 0.5);
 
 		frameEnd = SDL_GetTicks();	
 		frameDuration = frameEnd - frameStart;

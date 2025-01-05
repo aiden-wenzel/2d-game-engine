@@ -29,3 +29,5 @@ void handleCollision(GameObject* object1, GameObject* object2);
 void getRectangleCenter(GameObject* object, vec2 objectCenter);
 
 void calculateFinalVelocity(GameObject* object1, GameObject* object2, vec2 dest);
+
+void applyGravity(GameObject* object1, float g);
