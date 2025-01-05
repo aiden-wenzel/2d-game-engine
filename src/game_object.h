@@ -5,15 +5,15 @@
 typedef struct GameObject GameObject;
 
 struct GameObject {
-	ivec2 position;
-	ivec2 velocity;
+	vec2 position;
+	vec2 velocity;
 	SDL_FRect shape;
 };
 
-GameObject initializeGameObject(ivec2 initialPos, ivec2 initialVel);
+GameObject initializeGameObject(vec2 initialPos, vec2 initialVel);
 
 void renderGameObject(GameObject* object, SDL_Renderer* renderer);
 
 void moveGameObject(GameObject* object);
 
-void handleCollision(GameObject* object);
+void handleEdgeCollision(GameObject* object);

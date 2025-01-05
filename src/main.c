@@ -27,8 +27,8 @@ int main(int argc, char* argv[]) {
 	int quit = 0;
 	SDL_Event event;
 	
-	ivec2 objectPos = {50, 50};
-	ivec2 objectVel = {1, 1};
+	vec2 objectPos = {50.0f, 50.0f};
+	vec2 objectVel = {1.0f, 1.5f};
 	GameObject player = initializeGameObject(objectPos, objectVel);
 	
 	// Main loop
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
-		handleCollision(&player);
+		handleEdgeCollision(&player);
 		
 		renderGameObject(&player, renderer);
 		SDL_RenderPresent(renderer);
