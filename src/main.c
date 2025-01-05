@@ -33,8 +33,8 @@ int main(int argc, char* argv[]) {
 	vec2 objPos2 = {100.0f, 150.0f};
 	vec2 objVel2 = {2.0f, 5.0f};
 
-	GameObject player1 = initializeGameObject(objPos1, objVel1, 1.0f);
-	GameObject player2 = initializeGameObject(objPos2, objVel2, 1.0f);
+	GameObject player1 = initializeGameObject(objPos1, objVel1, 1.0f, 5.0f);
+	GameObject player2 = initializeGameObject(objPos2, objVel2, 1.0f, 5.0f);
 	
 	// Main loop
 
@@ -60,10 +60,10 @@ int main(int argc, char* argv[]) {
 		handleEdgeCollision(&player1);
 		handleEdgeCollision(&player2);
 
-		if (detectCollision(&player1, &player2)) {
-			printf("%s\n", "Collision detected");
-			handleCollision(&player1, &player2);
-		}
+		// if (detectCollision(&player1, &player2)) {
+		// 	printf("%s\n", "Collision detected");
+		// 	handleCollision(&player1, &player2);
+		// }
 		
 		renderGameObject(&player1, renderer);
 		renderGameObject(&player2, renderer);
