@@ -27,9 +27,14 @@ int main(int argc, char* argv[]) {
 	int quit = 0;
 	SDL_Event event;
 	
-	vec2 objectPos = {50.0f, 50.0f};
-	vec2 objectVel = {1.0f, 1.5f};
-	GameObject player = initializeGameObject(objectPos, objectVel);
+	vec2 objPos1 = {50.0f, 50.0f};
+	vec2 objVel1 = {1.0f, 1.5f};
+
+	vec2 objPos2 = {100.0f, 150.0f};
+	vec2 objVel2 = {2.0f, 5.0f};
+
+	GameObject player1 = initializeGameObject(objPos1, objVel1);
+	GameObject player2 = initializeGameObject(objPos2, objVel2);
 	
 	// Main loop
 
@@ -52,11 +57,18 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
-		handleEdgeCollision(&player);
+		handleEdgeCollision(&player1);
+		handleEdgeCollision(&player2);
+
+		if (detectCollision(&player1, &player2)) {
+			printf("%s\n", "Collision detected.");
+		}
 		
-		renderGameObject(&player, renderer);
+		renderGameObject(&player1, renderer);
+		renderGameObject(&player2, renderer);
 		SDL_RenderPresent(renderer);
-		moveGameObject(&player);
+		moveGameObject(&player1);
+		moveGameObject(&player2);
 
 		frameEnd = SDL_GetTicks();	
 		frameDuration = frameEnd - frameStart;

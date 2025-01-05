@@ -17,3 +17,5 @@ void renderGameObject(GameObject* object, SDL_Renderer* renderer);
 void moveGameObject(GameObject* object);
 
 void handleEdgeCollision(GameObject* object);
+
+bool detectCollision(GameObject* object1, GameObject* object2);
