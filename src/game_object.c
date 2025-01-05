@@ -10,17 +10,16 @@
 extern int WIDTH;
 extern int HEIGHT;
 
-GameObject initializeGameObject(vec2 initialPos, vec2 initialVel, float mass) {
+GameObject initializeGameObject(vec2 initialPos, vec2 initialVel, float mass, float radius) {
 	GameObject newGameObject;
 
 	glm_vec2_copy(initialPos, newGameObject.position);
 	glm_vec2_copy(initialVel, newGameObject.velocity);
 
-	SDL_FRect objectShape;
+	Circle objectShape;
+	objectShape.radius = radius;
 	objectShape.x = initialPos[0];
 	objectShape.y = initialPos[1];
-	objectShape.h = 50;
-	objectShape.w = 100;
 
 	newGameObject.shape = objectShape;
 
@@ -31,7 +30,7 @@ GameObject initializeGameObject(vec2 initialPos, vec2 initialVel, float mass) {
 
 void renderGameObject(GameObject* object, SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
-	SDL_RenderRect(renderer, &object->shape);
+	renderCircle(renderer, object->shape.x, object->shape.y, object->shape.radius);
 }
 
 void moveGameObject(GameObject* object) {

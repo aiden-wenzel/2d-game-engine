@@ -2,23 +2,19 @@
 #include <cglm/cglm.h>
 #include <SDL3/SDL.h>
 
+#include "circle.h"
+
 typedef struct GameObject GameObject;
 typedef struct Circle Circle;
 
 struct GameObject {
 	vec2 position;
 	vec2 velocity;
-	SDL_FRect shape;
+	Circle shape;
 	float mass;
 };
 
-struct Circle {
-	float x;
-	float y;
-	float radius;
-}
-
-GameObject initializeGameObject(vec2 initialPos, vec2 initialVel, float mass);
+GameObject initializeGameObject(vec2 initialPos, vec2 initialVel, float mass, float radius);
 
 void renderGameObject(GameObject* object, SDL_Renderer* renderer);
 
