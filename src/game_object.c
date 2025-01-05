@@ -42,10 +42,10 @@ void moveGameObject(GameObject* object) {
 }
 
 void handleEdgeCollision(GameObject* object) {
-	bool collideLeft = object->position[0] <= 0;	
-	bool collideTop = object->position[1] <= 0;
-	bool collideRight = object->position[0] + object->shape.w >= WIDTH;
-	bool collideBottom = object->position[1] + object->shape.h >= HEIGHT;
+	bool collideLeft = object->position[0] - object->shape.radius <= 0;	
+	bool collideTop = object->position[1] - object->shape.radius<= 0;
+	bool collideRight = object->position[0] + object->shape.radius >= WIDTH;
+	bool collideBottom = object->position[1] + object->shape.radius >= HEIGHT;
 
 	if (collideTop || collideBottom ) {
 		object->velocity[1] *= -1;
