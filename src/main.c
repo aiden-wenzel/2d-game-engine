@@ -8,14 +8,14 @@
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
-const int FPS = 60;
+const int FPS = 1;
 
 SDL_Window* initializeWindow(int width, int height); 
 SDL_Renderer* initializeRenderer(SDL_Window* window); 
 
 int main(int argc, char* argv[]) {
 	// Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+	if (!SDL_Init(SDL_INIT_VIDEO)) {
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 		return -1;
 	}
@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 	Uint64 frameStart;
 	Uint64 frameEnd;
 	Uint64 frameDuration;
-	int idealFrameTime = 1000/60;
+	int idealFrameTime = 1000/FPS;
 
 	while (!quit) {
 		frameStart = SDL_GetTicks();
