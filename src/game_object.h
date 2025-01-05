@@ -3,6 +3,7 @@
 #include <SDL3/SDL.h>
 
 typedef struct GameObject GameObject;
+typedef struct Circle Circle;
 
 struct GameObject {
 	vec2 position;
@@ -10,6 +11,12 @@ struct GameObject {
 	SDL_FRect shape;
 	float mass;
 };
+
+struct Circle {
+	float x;
+	float y;
+	float radius;
+}
 
 GameObject initializeGameObject(vec2 initialPos, vec2 initialVel, float mass);
 
