@@ -26,5 +26,3 @@ FetchContent_MakeAvailable(cglm)
 # add_subdirectory("lib/sdl")
 
 add_subdirectory(src)
-
-
