@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(SimpleSDL2Window C)
 
-find_package(SDL3 REQUIRED)
-find_package(cglm REQUIRED)
+include_directories("./lib/cglm/include/cglm" "./lib/sdl/include/SDL3")
 
 add_subdirectory(src)
