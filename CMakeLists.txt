@@ -19,7 +19,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(sdl)
 FetchContent_MakeAvailable(cglm)
-include_directories("./build/_deps/cglm-src/include/cglm")
+include_directories("./build/_deps/cglm-src/include/")
 # include_directories("./lib/cglm/include/cglm" "./lib/sdl/include/SDL3")
 #
 # add_subdirectory("lib/cglm")
